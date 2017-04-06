@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Chap5_transforms" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KmY-2F-YV7">
+                                <rect key="frame" x="87.5" y="233.5" width="200" height="200"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Snowman" translatesAutoresizingMaskIntoConstraints="NO" id="XIF-pA-ki7">
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="200" id="7hv-Uc-EdS"/>
+                                            <constraint firstAttribute="width" constant="200" id="c0a-Lo-2nL"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="XIF-pA-ki7" firstAttribute="centerX" secondItem="KmY-2F-YV7" secondAttribute="centerX" id="RyH-JI-9XQ"/>
+                                    <constraint firstItem="XIF-pA-ki7" firstAttribute="width" secondItem="KmY-2F-YV7" secondAttribute="width" id="UqF-xz-14z"/>
+                                    <constraint firstItem="XIF-pA-ki7" firstAttribute="height" secondItem="KmY-2F-YV7" secondAttribute="height" id="X7h-7i-mHA"/>
+                                    <constraint firstItem="XIF-pA-ki7" firstAttribute="centerY" secondItem="KmY-2F-YV7" secondAttribute="centerY" id="kSi-SI-Ltz"/>
+                                </constraints>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Snowman" translatesAutoresizingMaskIntoConstraints="NO" id="35w-Bg-2EJ">
+                                <rect key="frame" x="225" y="517" width="100" height="100"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="gFQ-3o-g7t"/>
+                                    <constraint firstAttribute="width" constant="100" id="whO-Dk-LC4"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xGK-pQ-L8D">
+                                <rect key="frame" x="112" y="50" width="150" height="150"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C1v-yA-xPh">
+                                        <rect key="frame" x="25" y="25" width="100" height="100"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="K1R-sd-wNb"/>
+                                            <constraint firstAttribute="height" constant="100" id="opV-n2-w6j"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="Eby-oV-ztT"/>
+                                    <constraint firstAttribute="height" constant="150" id="QOd-2R-sBU"/>
+                                    <constraint firstItem="C1v-yA-xPh" firstAttribute="centerX" secondItem="xGK-pQ-L8D" secondAttribute="centerX" id="Voc-ts-CKL"/>
+                                    <constraint firstItem="C1v-yA-xPh" firstAttribute="centerY" secondItem="xGK-pQ-L8D" secondAttribute="centerY" id="poE-QR-R6b"/>
+                                </constraints>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Snowman" translatesAutoresizingMaskIntoConstraints="NO" id="Esr-KG-91O">
+                                <rect key="frame" x="50" y="517" width="100" height="100"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="JtD-t9-haW"/>
+                                    <constraint firstAttribute="width" constant="100" id="rt3-uj-z7C"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottomMargin" secondItem="Esr-KG-91O" secondAttribute="bottom" constant="50" id="6dA-aJ-fJ2"/>
+                            <constraint firstItem="xGK-pQ-L8D" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="50" id="6fY-XH-Bdq"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="35w-Bg-2EJ" secondAttribute="bottom" constant="50" id="BzY-Nn-vSz"/>
+                            <constraint firstItem="KmY-2F-YV7" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Ge2-XR-eto"/>
+                            <constraint firstAttribute="trailing" secondItem="35w-Bg-2EJ" secondAttribute="trailing" constant="50" id="LAv-4P-ZLa"/>
+                            <constraint firstItem="KmY-2F-YV7" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="l82-5H-mqE"/>
+                            <constraint firstItem="xGK-pQ-L8D" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="wjy-mf-m3L"/>
+                            <constraint firstItem="Esr-KG-91O" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="50" id="xhU-IS-HZJ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="XIF-pA-ki7" id="q3I-aD-xu4"/>
+                        <outlet property="innerView" destination="C1v-yA-xPh" id="0FQ-Dh-EJE"/>
+                        <outlet property="leftImageView" destination="Esr-KG-91O" id="n03-1g-6Hk"/>
+                        <outlet property="outerView" destination="xGK-pQ-L8D" id="dsa-y9-gdK"/>
+                        <outlet property="rightImageView" destination="35w-Bg-2EJ" id="AEG-Xl-h6V"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="140" y="138.98050974512745"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Snowman" width="200" height="280"/>
+    </resources>
+</document>
