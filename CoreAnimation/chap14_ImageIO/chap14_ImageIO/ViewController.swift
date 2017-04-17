@@ -9,6 +9,9 @@
 import UIKit
 
 class ViewController: UIViewController {
+    //14.5
+    
+    let cache = NSCache<NSNumber, UIImage>()
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -75,23 +78,35 @@ extension ViewController: UICollectionViewDataSource {
         
         // 14.4
         //add the tiled layer
-        var tileLayer = cell.contentView.layer.sublayers?.last as? CATiledLayer
+//        var tileLayer = cell.contentView.layer.sublayers?.last as? CATiledLayer
+//        
+//        if tileLayer == nil {
+//            tileLayer = CATiledLayer()
+//            tileLayer?.frame = cell.bounds
+//            let scale = UIScreen.main.scale
+//            tileLayer?.contentsScale = scale
+//            tileLayer?.tileSize = CGSize(width: cell.bounds.size.width * scale, height: cell.bounds.size.height * scale)
+//            tileLayer?.delegate = self
+//            tileLayer?.setValue(indexPath.row, forKey: "index")
+//            cell.contentView.layer.addSublayer(tileLayer!)
+//
+//        }
+//        
+//        tileLayer?.contents = nil
+//        tileLayer?.setValue(indexPath.row, forKey: "index")
+//        tileLayer?.setNeedsDisplay()
         
-        if tileLayer == nil {
-            tileLayer = CATiledLayer()
-            tileLayer?.frame = cell.bounds
-            let scale = UIScreen.main.scale
-            tileLayer?.contentsScale = scale
-            tileLayer?.tileSize = CGSize(width: cell.bounds.size.width * scale, height: cell.bounds.size.height * scale)
-            tileLayer?.delegate = self
-            tileLayer?.setValue(indexPath.row, forKey: "index")
-            cell.contentView.layer.addSublayer(tileLayer!)
-
+        // 14.5
+        // set or load image for this index
+        cell.photo.image = loadImage(at: indexPath.item)
+        
+        // preload
+        if indexPath.item < imagePaths.count - 1 {
+            loadImage(at: indexPath.item + 1)
         }
-        
-        tileLayer?.contents = nil
-        tileLayer?.setValue(indexPath.row, forKey: "index")
-        tileLayer?.setNeedsDisplay()
+        if indexPath.item > 0 {
+            loadImage(at: indexPath.item - 1)
+        }
         
         return cell
     }
@@ -117,6 +132,47 @@ extension ViewController: CALayerDelegate {
         UIGraphicsPushContext(ctx)
         image?.draw(in: imageRect)
         UIGraphicsPopContext()
+    }
+}
+
+// 14.5
+extension ViewController {
+    @discardableResult func loadImage(at index: Int) -> UIImage? {
+        
+        //set up cache
+        if let image = cache.object(forKey: NSNumber(integerLiteral:index)){
+            return image
+        } else {
+            
+            DispatchQueue.global(qos: .background).async {
+                let path = self.imagePaths[index]
+                var image = UIImage(contentsOfFile: path)
+                
+                //redraw image using device context
+                UIGraphicsBeginImageContextWithOptions(image!.size, true, 0)
+                image!.draw(at: CGPoint.zero)
+                image = UIGraphicsGetImageFromCurrentImageContext()
+                UIGraphicsEndImageContext()
+                
+                DispatchQueue.main.async {
+                    // cache image
+                    self.cache.setObject(image!, forKey: NSNumber(integerLiteral:index))
+                    
+                    // display the image
+                    let indexPath =  IndexPath(item: index, section: 0)
+                    
+                    let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! PhotoCell
+                    cell.photo.image = image!
+                    
+                }
+
+                
+            }
+            
+        }
+        
+        
+        return nil
     }
 }
 
