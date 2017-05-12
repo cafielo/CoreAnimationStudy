@@ -86,24 +86,30 @@ class ViewController: UIViewController, UIScrollViewDelegate {
                     
                     var layer: CALayer?
                     layer = recycleSet.first
-                    
+//
                     if layer != nil {
                         recycled += 1
                         recycleSet.remove(layer!)
                     } else {
+                        layer = CALayer()
                         layer?.frame = CGRect(x: 0, y: 0, width: viewSize, height: viewSize)
                         layer?.position = CGPoint(x: x * spacing, y: y * spacing)
+                        layer?.zPosition = CGFloat(-z * spacing)
                     }
-                    
-//                    let layer = CALayer()
-//                    layer.zPosition = CGFloat(-z * spacing)
-//                    layer.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
-//                    layer.position = CGPoint(x: x * spacing, y: y * spacing)
-                    
                     let alpha = 1 - CGFloat(z) * 1 / CGFloat(depth)
-                    print(alpha)
                     layer?.backgroundColor = UIColor.white.withAlphaComponent(alpha).cgColor
                     visibleLayers.append(layer!)
+
+                    
+//                    let layer = CALayer()
+//                    layer.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+//                    layer.position = CGPoint(x: x * spacing, y: y * spacing)
+//                    layer.zPosition = CGFloat(-z * spacing)
+//                    let alpha = 1 - CGFloat(z) * 1 / CGFloat(depth)
+//                    print(alpha)
+//                    
+//                    layer.backgroundColor = UIColor.white.withAlphaComponent(alpha).cgColor
+//                    visibleLayers.append(layer)
                 }
             }
         }
